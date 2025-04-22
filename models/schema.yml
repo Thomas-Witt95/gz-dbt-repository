@@ -7,8 +7,30 @@ sources:
     schema: gz_raw_data
     tables:
        - name: product
-         identifier: raw_gz_product 
+         identifier: raw_gz_product
+         description:  Product list of GreenWeez, one row per product_id and the price of that product 
+         columns:
+            - name: products_id
+              tests:
+              - unique
        - name: sales
          identifier: raw_gz_sales
+         description: sales of Greenweez / we have one row per product_id found in each orders_id
+         columns:
+           - name: pdt_id 
+         tests:
+         - unique:
+             column_name: "(orders_id || '-' || pdt_id)"
+         freshness: 
+           warn_after:
+             count: 90
+             period: day
+              
        - name: ship
          identifier: raw_gz_ship
+         description: Shipping details for Greenweez / one row per Order_id showingg the shipping fee, logisitcs cost and shipping cost per order
+         columns:
+            - name: orders_id
+              tests:
+              - unique
+           
