@@ -33,8 +33,21 @@ sources:
             - name: orders_id
               tests:
               - unique
-           
 
+       - name: adwords
+         identifier: raw_gz_adwords
+         description: details of the adwords campaign
+       - name: bing
+         identifier: raw_gz_bing
+         description: details of the bing campaign
+
+       - name: criteo
+         identifier: raw_gz_criteo
+         description: details of the criteo campaign
+                
+       - name: facebook
+         identifier: raw_gz_facebook
+         description: details of the facebook campaign
 
 models:
    - name: int_orders_margin
